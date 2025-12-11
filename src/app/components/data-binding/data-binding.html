@@ -1,0 +1,92 @@
+<section class="card">
+  <h1>Course &amp; City Demo</h1>
+
+  <table class="data-table" aria-describedby="demo-desc">
+    <caption id="demo-desc" class="sr-only">
+      Demo table showing course and city bindings, dynamic inputs, and actions.
+    </caption>
+    <tbody>
+      <!-- row 1: display values (3 pairs => 6 columns) -->
+      <tr>
+        <td><label class="label">Course (span):</label></td>
+        <td>{{ courseName }}</td>
+
+        <td><label class="label">Course (strong):</label></td>
+        <td><strong>{{ courseName }}</strong></td>
+
+        <td><label class="label">City:</label></td>
+        <td>{{ cityName }}</td>
+      </tr>
+
+      <!-- row 2: read-only input, styled paragraph, dynamic inputs -->
+      <tr>
+        <td><label for="course-read">Course (input value)</label></td>
+        <td><input id="course-read" type="text" [value]="courseName" readonly aria-readonly="true"></td>
+
+        <td><label>Styled paragraph</label></td>
+        <td><p [class]="className">This is paragraph</p></td>
+
+        <!-- combine two columns for the dynamic inputs grid -->
+        <td colspan="2">
+          <div class="type-inputs" role="group" aria-label="Dynamic inputs">
+            <label class="sr-only" for="inp-name"></label>
+            <input id="inp-name" [type]="inputType" name="inpName" placeholder="Name">
+
+            <label class="sr-only" for="inp-pass"></label>
+            <input id="inp-pass" [type]="inputType1" name="inpPass" placeholder="Password">
+
+            <label class="sr-only" for="inp-email"></label>
+            <input id="inp-email" [type]="inputType2" name="inpEmail" placeholder="Email">
+
+            <label class="sr-only" for="inp-number"></label>
+            <input id="inp-number" [type]="inputType3" name="inpNumber" placeholder="Number">
+
+            <!-- additional dynamic inputs -->
+            <label class="sr-only" for="inp-4">Extra 1</label>
+            <input id="inp-4" [type]="inputType4" name="inp4" placeholder="">
+
+            <label class="sr-only" for="inp-5">Extra 2</label>
+            <input id="inp-5" [type]="inputType5" name="inp5" placeholder="">
+
+            <label class="sr-only" for="inp-6">Extra 3</label>
+            <input id="inp-6" [type]="inputType6" name="inp6" placeholder="">
+
+            <label class="sr-only" for="inp-7">Extra 4</label>
+            <input id="inp-7" [type]="inputType7" name="inp7" placeholder="">
+          </div>
+        </td>
+      </tr>
+
+      <!-- row 3: actions and select; kept to 6 columns -->
+      <tr>
+        <td>
+          <button type="button" (click)="showWelcomeMessage()">Show Message</button>
+        </td>
+
+        <td>
+          <label for="city">Choose city</label>
+          <select id="city" name="city" [(ngModel)]="cityName" aria-label="Choose city">
+            <option value="">-- Select --</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Pune">Pune</option>
+            <option value="Nashik">Nashik</option>
+          </select>
+        </td>
+
+        <td colspan="2">
+          <label for="course-edit">Course (edit)</label>
+          <input id="course-edit" type="text" name="courseName" [(ngModel)]="courseName" placeholder="Edit course name">
+        </td>
+
+        <td class="actions">
+          <button type="button" (click)="changeCourseName('Java')">Change to Java</button>
+          <button type="button" (click)="changeCourseName('Data Science')">Change to Data Science</button>
+        </td>
+
+        <!-- a small empty cell to keep 6 columns consistent -->
+        <td aria-hidden="true"></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
